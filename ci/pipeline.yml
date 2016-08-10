@@ -59,7 +59,7 @@ jobs:
       file: source-code/ci/tasks/package.yml
     - put: deploy-dev-app
       params:
-        manifest: ../source-code/manifest-test.yml
+        manifest: source-code/manifest-test.yml
         current_app_name: concourse-spring-boot
         path: ../source-code/build/libs/concourse-spring-boot*.jar
 
