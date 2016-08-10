@@ -1,9 +1,43 @@
+resource_types:
+  - name: maven
+    type: docker-image
+    source:
+      repository: twic/maven-repo-resource
+      tag: "1"
+
 resources:
   - name: source-code
     type: git
     source:
-      uri: https://github.com/jshingler/concourse-spring-boot.git
-      branch: master
+      uri: {{GIT_REPO}}
+      branch: {GIT_BRANCH}
+
+  - name: deploy-test-app
+    type: cf
+    source:
+      api: {{CF_API}}
+      username: {{CF_USER}}
+      password: {{CF_PASS}}
+      organization: {{CF_TEST_ORG}}
+      space: {{CF_TEST_SPACE}}
+      skip_cert_check: true
+
+  - name: deploy-dev-app
+    type: cf
+    source:
+      api: {{CF_API}}
+      username: {{CF_USER}}
+      password: {{CF_PASS}}
+      organization: {{CF_DEV_ORG}}
+      space: {{CF_DEV_SPACE}}
+      skip_cert_check: true
+
+  - name: build-artifact-jar
+    type: maven
+    source:
+      group: com.example
+      artifact: concourse-spring-boot
+      repository: http://10.210.168.181:8081/repository/maven-snapshots
 
 jobs:
   - name: unit-tests
@@ -13,6 +47,7 @@ jobs:
     - task: package
       privileged: true
       file: source-code/ci/tasks/unit.yml
+
   - name: package
     plan:
     - get: source-code
@@ -21,3 +56,17 @@ jobs:
     - task: package
       privileged: true
       file: source-code/ci/tasks/package.yml
+
+    - name: integration-tests
+      serial_groups: [version]
+      plan:
+      - aggregate:
+        - get: build-artifact-jar
+          passed: [package]
+          trigger: true
+      - put: deploy-dev-app
+        params:
+          manifest: source-code/manifest-test.yml
+          current_app_name: concourse-spring-boot
+          path: build-artifact-jar/concourse-spring-boot*.jar
+

@@ -1,0 +1,6 @@
+---
+applications:
+- name: concourse-spring-boot-test
+  memory: 512M
+  instances: 1
+  host: concourse-spring-boot-test
