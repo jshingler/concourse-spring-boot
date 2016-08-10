@@ -13,10 +13,12 @@ buildscript {
 apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'spring-boot'
+apply plugin: 'maven-publish'
 
+group = 'com.example'
 jar {
 	baseName = 'concourse-spring-boot'
-	version = '0.0.1-SNAPSHOT'
+	version = '0.0.3-SNAPSHOT'
 }
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
@@ -37,4 +39,27 @@ eclipse {
 		 containers.remove('org.eclipse.jdt.launching.JRE_CONTAINER')
 		 containers 'org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8'
 	}
+}
+
+publishing {
+	publications {
+        maven(MavenPublication) {
+            groupId 'com.example'
+            artifactId "${jar.baseName}"
+            version "${jar.version}"
+
+            from components.java
+        }
+    }
+    repositories {
+        maven {
+        	credentials {
+                username "${repoUsername}"
+                password "${repoPassword}"
+            }
+            // change to point to your repo, e.g. http://my.org/repo
+            url "${repoUrl}/repository/maven-snapshots/"
+        }
+    }
+
 }
