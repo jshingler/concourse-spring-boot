@@ -61,5 +61,4 @@ publishing {
             url "${repoUrl}/repository/maven-snapshots/"
         }
     }
-
 }

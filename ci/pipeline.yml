@@ -6,9 +6,17 @@ resources:
       branch: master
 
 jobs:
+  - name: unit-tests
+    plan:
+    - get: source-code
+      trigger: true
+    - task: package
+      privileged: true
+      file: source-code/ci/tasks/unit.yml
   - name: package
     plan:
     - get: source-code
+      passed: [unit-tests]
       trigger: true
     - task: package
       privileged: true
