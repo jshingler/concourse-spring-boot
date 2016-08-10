@@ -10,7 +10,7 @@ resources:
     type: git
     source:
       uri: {{GIT_REPO}}
-      branch: {GIT_BRANCH}
+      branch: {{GIT_BRANCH}}
 
   - name: deploy-test-app
     type: cf
@@ -56,17 +56,20 @@ jobs:
     - task: package
       privileged: true
       file: source-code/ci/tasks/package.yml
+    - put: deploy-dev-app
+      params:
+        manifest: source-code/manifest-test.yml
 
-    - name: integration-tests
-      serial_groups: [version]
-      plan:
-      - aggregate:
-        - get: build-artifact-jar
-          passed: [package]
-          trigger: true
-      - put: deploy-dev-app
-        params:
-          manifest: source-code/manifest-test.yml
-          current_app_name: concourse-spring-boot
-          path: build-artifact-jar/concourse-spring-boot*.jar
+  # - name: deploy-to-dev
+  #   plan:
+  #   - get: build-artifact-jar
+  #     passed: [ package ]
+  #     trigger: true
+  #   - get: source-code
+  #     passed: [ package]
+  #   - put: deploy-dev-app
+  #     params:
+  #       manifest: source-code/manifest-test.yml
+  #       current_app_name: concourse-spring-boot
+  #       path: build-artifact-jar/concourse-spring-boot*.jar
 
