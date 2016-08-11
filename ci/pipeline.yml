@@ -55,13 +55,12 @@ jobs:
       passed: [ unit-tests ]
       trigger: true
     - task: package
-      privileged: true
       file: source-code/ci/tasks/package.yml
     - put: deploy-dev-app
       params:
         manifest: source-code/manifest-test.yml
-        current_app_name: concourse-spring-boot
-        path: source-code/build/libs/concourse-spring-boot-0.0.2-SNAPSHOT.jar
+        # current_app_name: concourse-spring-boot
+        # path: source-code/build/libs/concourse-spring-boot-0.0.2-SNAPSHOT.jar
 
   # - name: deploy-to-dev
   #   plan:

@@ -3,5 +3,5 @@ applications:
 - name: concourse-spring-boot-test
   memory: 512M
   instances: 1
-  host: concourse-spring-boot-test
+  host: jsconcourse-spring-boot-test
   path: ./build/libs/concourse-spring-boot-0.0.3-SNAPSHOT.jar
