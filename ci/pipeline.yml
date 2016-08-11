@@ -59,6 +59,7 @@ jobs:
     - put: deploy-dev-app
       params:
         manifest: source-code/manifest-test.yml
+        path: build-lib
         # current_app_name: concourse-spring-boot
         # path: source-code/build/libs/concourse-spring-boot-0.0.2-SNAPSHOT.jar
 

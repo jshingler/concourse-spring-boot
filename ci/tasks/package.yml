@@ -9,6 +9,9 @@ image_resource:
 inputs:
   - name: source-code
 
+outputs:
+  -name: build-lib
+
 run:
   path: "source-code/gradlew"
   args: ["--build-file", "source-code/build.gradle", "assemble", "publish"]
