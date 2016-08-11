@@ -13,9 +13,10 @@ outputs:
   - name: build
 
 run:
-  path: "source-code/gradlew"
-  args: ["--build-file", "source-code/build.gradle", "assemble", "publish"]
+  path: "source-code/ci/tasks/publish.sh"
+#   path: "source-code/gradlew"
+#   args: ["--build-file", "source-code/build.gradle", "assemble", "publish"]
 
-params:
-  TERM: -dumb
-  GRADLE_OPTS: -Dorg.gradle.native=false
+# params:
+#   TERM: -dumb
+#   GRADLE_OPTS: -Dorg.gradle.native=false
