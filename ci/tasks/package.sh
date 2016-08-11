@@ -7,7 +7,7 @@ echo "Build and Publish to Maven Repo"
 pwd
 cd source-code
 pwd
-gradlew assemble publish
+./gradlew assemble publish
 
 echo "Move artifacts to output area"
 cp build/libs/concourse-spring-boot*.jar ../build
