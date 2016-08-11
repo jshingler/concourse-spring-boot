@@ -45,14 +45,14 @@ jobs:
     plan:
     - get: source-code
       trigger: true
-    - task: package
+    - task: run-tests
       privileged: true
       file: source-code/ci/tasks/unit.yml
 
-  - name: package
+  - name: package-and-deploy
     plan:
     - get: source-code
-      passed: [unit-tests]
+      passed: [ unit-tests ]
       trigger: true
     - task: package
       privileged: true
@@ -61,7 +61,7 @@ jobs:
       params:
         manifest: source-code/manifest-test.yml
         current_app_name: concourse-spring-boot
-        path: ../source-code/build/libs/concourse-spring-boot*.jar
+        path: source-code/build/libs/concourse-spring-boot-0.0.2-SNAPSHOT.jar
 
   # - name: deploy-to-dev
   #   plan:
