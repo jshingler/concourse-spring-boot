@@ -4,6 +4,9 @@ set -e # fail fast
 set -x # print commands
 
 echo "Build and Publish to Maven Repo"
+pwd
+cd source-code
+pwd
 gradlew assemble publish
 
 echo "Move artifacts to output area"
