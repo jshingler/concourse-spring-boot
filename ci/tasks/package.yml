@@ -13,7 +13,7 @@ outputs:
   - name: build
 
 run:
-  path: "source-code/ci/tasks/publish.sh"
+  path: "source-code/ci/tasks/package.sh"
 #   path: "source-code/gradlew"
 #   args: ["--build-file", "source-code/build.gradle", "assemble", "publish"]
 
