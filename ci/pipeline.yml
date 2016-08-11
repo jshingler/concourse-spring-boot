@@ -48,22 +48,22 @@ jobs:
     - task: run-tests
       privileged: true
       file: source-code/ci/tasks/unit.yml
+    # - put: deploy-dev-app
+    #   params:
+    #     manifest: source-code/manifest-test.yml
+
+  - name: package-and-deploy
+    plan:
+    - get: source-code
+      passed: [ unit-tests ]
+      trigger: true
+    - task: package
+      file: source-code/ci/tasks/package.yml
     - put: deploy-dev-app
       params:
         manifest: source-code/manifest-test.yml
-
-  # - name: package-and-deploy
-  #   plan:
-  #   - get: source-code
-  #     passed: [ unit-tests ]
-  #     trigger: true
-  #   - task: package
-  #     file: source-code/ci/tasks/package.yml
-  #   - put: deploy-dev-app
-  #     params:
-  #       manifest: source-code/manifest-test.yml
-  #       path: build
-        # current_app_name: concourse-spring-boot
+        path: build/concourse-spring-boot*.jar
+        current_app_name: concourse-spring-boot
         # path: source-code/build/libs/concourse-spring-boot-0.0.2-SNAPSHOT.jar
 
   # - name: deploy-to-dev
