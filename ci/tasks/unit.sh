@@ -8,6 +8,8 @@ export TERM=${TERM:-dumb}
 # echo "2=$2"
 # env
 
+echo "Build and Publish to Maven Repo"
+
 cd source-code
 echo "Configuring Git"
 git status
