@@ -10,5 +10,7 @@ pwd
 cd source-code
 pwd
 date >> README.md
+echo "=============================="
+git status
 
 echo "Build and Publish -- Done"
