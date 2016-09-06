@@ -19,7 +19,6 @@ RawBlameHistory     Executable File  41 lines (32 sloc)  918 Bytes
 set -e # fail fast
 set -x # print commands
 export TERM=${TERM:-dumb}
-
 # echo "Build and Publish to Maven Repo"
 # echo "1=$1"
 # echo "2=$2"
