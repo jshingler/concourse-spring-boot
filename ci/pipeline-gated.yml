@@ -51,6 +51,10 @@ jobs:
     - task: run-tests
       privileged: true
       file: source-code/ci/tasks/unit.yml
+      params:
+        REMOTE_SERVER: 10.20.30.40:8080
+        USERNAME: my-user
+        PASSWORD: my-pass
     - put: source-code
       params:
         repository: source-code
