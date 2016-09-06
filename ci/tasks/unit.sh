@@ -15,7 +15,7 @@ git status
 date >> README.md
 git add README.md
 git commit -m "Dated README"
-git push
+# git push
 echo "=============================="
 git status
 
