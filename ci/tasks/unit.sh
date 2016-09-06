@@ -1,19 +1,3 @@
-Skip to content
-This repository
-Search
-Pull requests
-Issues
-Gist
- @jshingler
- Unwatch 1
-  Star 0
- Fork 0 jshingler/concourse-spring-boot
- Code  Issues 1  Pull requests 0  Projects 1  Wiki  Pulse  Graphs  Settings
-Branch: feature1 Find file Copy pathconcourse-spring-boot/ci/tasks/unit.sh
-948882e  22 hours ago
-@jshingler jshingler added rebase test
-1 contributor
-RawBlameHistory     Executable File  41 lines (32 sloc)  918 Bytes
 #!/bin/sh
 
 set -e # fail fast
@@ -54,5 +38,3 @@ git clone . ../source-code2
 
 echo "=============================="
 echo "Build and Publish -- Done"
-Contact GitHub API Training Shop Blog About
-© 2016 GitHub, Inc. Terms Privacy Security Status Help
