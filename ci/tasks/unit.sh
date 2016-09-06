@@ -8,7 +8,7 @@ export TERM=${TERM:-dumb}
 echo "Build and Publish to Maven Repo"
 echo "1=$1"
 echo "2=$2"
-echo "3=$3"
+env
 
 pwd
 cd source-code
