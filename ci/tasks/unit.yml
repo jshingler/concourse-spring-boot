@@ -19,7 +19,7 @@ run:
   # path: "source-code/gradlew"
   # args: ["--build-file", "source-code/build.gradle", "assemble", "test"]
   path: "source-code/ci/tasks/unit.sh"
-  args: ["abc", "xyz", {{GIT_USERNAME}}]
+  args: ["abc", "xyz", "{{GIT_USERNAME}}"]
 
 params:
   TERM: -dumb
