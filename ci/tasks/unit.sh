@@ -13,6 +13,7 @@ env
 pwd
 cd source-code
 pwd
+git status
 date >> README.md
 echo "=============================="
 git status
