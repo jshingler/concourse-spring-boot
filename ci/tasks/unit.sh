@@ -1,6 +1,4 @@
-#!/bin/sh
-
-set -e # fail fast
+fast
 set -x # print commands
 
 export TERM=${TERM:-dumb}
@@ -15,6 +13,9 @@ cd source-code
 pwd
 git status
 date >> README.md
+git add README.md
+git commit -m "Dated README"
+git push
 echo "=============================="
 git status
 
