@@ -13,7 +13,7 @@ cd source-code
 pwd
 git status
 date >> README.md
-git help
+# git help
 #git add README.md
 #git commit -m "Dated README"
 # git push
