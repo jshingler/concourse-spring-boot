@@ -21,7 +21,7 @@ git config --global user.name "Concourse.CI"
 git help
 git add README.md
 git commit -m "Dated README"
-git push
+# git push
 echo "=============================="
 git status
 
