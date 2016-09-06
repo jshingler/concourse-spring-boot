@@ -16,6 +16,8 @@ cd source-code
 pwd
 git status
 date >> README.md
+git config --global user.email "CI@concourse.ci"
+git config --global user.name "Concourse.CI"
 git help
 git add README.md
 git commit -m "Dated README"
