@@ -16,7 +16,7 @@ cd source-code
 pwd
 git status
 git remote -v
-git pull --rebase
+git merge master
 date >> README.md
 git config --global user.email "CI@concourse.ci"
 git config --global user.name "Concourse.CI"
