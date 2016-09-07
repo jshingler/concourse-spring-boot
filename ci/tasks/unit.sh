@@ -15,6 +15,7 @@ pwd
 cd source-code
 pwd
 git status
+git remote -v
 date >> README.md
 git config --global user.email "CI@concourse.ci"
 git config --global user.name "Concourse.CI"
