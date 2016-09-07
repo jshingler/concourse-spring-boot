@@ -14,6 +14,11 @@ env
 pwd
 cd source-code
 pwd
+# Run Test on unrebased branch
+# if success
+# Rebase Origin Master on this branch and rerun test (Build Acceptance)
+# if success
+# Ready to submit pull request
 git status
 git config --global core.mergeoptions --no-edit
 git config --global user.email "CI@concourse.ci"
