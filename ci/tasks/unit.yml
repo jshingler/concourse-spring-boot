@@ -9,6 +9,9 @@ image_resource:
 inputs:
   - name: source-code
 
+outputs:
+  - name: source-code
+
 params:
   USERNAME: NOT_SET_USERNAME
 
