@@ -2,38 +2,36 @@
 
 set -e # fail fast
 set -x # print commands
-
-
 export TERM=${TERM:-dumb}
 
-echo "Build and Publish to Maven Repo"
-echo "1=$1"
-echo "2=$2"
-env
+# echo "Build and Publish to Maven Repo"
+# echo "1=$1"
+# echo "2=$2"
+# env
 
-pwd
 cd source-code
-pwd
-# Run Test on unrebased branch
-# if success
-# Rebase Origin Master on this branch and rerun test (Build Acceptance)
-# if success
-# Ready to submit pull request
+echo "Configuring Git"
 git status
 git config --global core.mergeoptions --no-edit
 git config --global user.email "CI@concourse.ci"
 git config --global user.name "Concourse.CI"
-git remote -v
+# git remote -v
+
+# Run Test on unrebased branch
+./gradlew test
+
+# Rebase Origin Master on this branch and rerun test (Build Acceptance)
 # git merge origin/master
+echo "Rebase master into branch"
 git pull --rebase origin master
 echo "Passed Gate On: $(date)\n" >> README.md
 
 # git help
 git add README.md
 git commit -m "Dated README"
-git clone . ../source-code2
-# git push
-echo "=============================="
-git status
 
+# Copy to output areas so it can be pushed back up to repo
+git clone . ../source-code2
+
+echo "=============================="
 echo "Build and Publish -- Done"
