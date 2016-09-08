@@ -31,6 +31,7 @@ date >> README.md
 git help
 git add README.md
 git commit -m "Dated README"
+git clone . ./source-code2
 # git push
 echo "=============================="
 git status
