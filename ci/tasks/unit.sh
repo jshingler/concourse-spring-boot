@@ -28,10 +28,12 @@ git remote -v
 git pull --rebase origin master
 date >> README.md
 
-git help
+# git help
+echo "--------------- HERE WE GO"
 git add README.md
 git commit -m "Dated README"
-git clone . ./source-code2
+git clone . ../source-code2
+echo "--------------- HERE WE GO"
 # git push
 echo "=============================="
 git status
