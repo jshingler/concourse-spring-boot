@@ -14,13 +14,13 @@ resources:
       username: {{GIT_USERNAME}}
       password: {{GIT_PASSWORD}}
 
-  - name: source-code2
-    type: git
-    source:
-      uri: {{GIT_REPO}}
-      branch: {{GIT_BRANCH}}
-      username: {{GIT_USERNAME}}
-      password: {{GIT_PASSWORD}}
+  # - name: source-code2
+  #   type: git
+  #   source:
+  #     uri: {{GIT_REPO}}
+  #     branch: {{GIT_BRANCH}}
+  #     username: {{GIT_USERNAME}}
+  #     password: {{GIT_PASSWORD}}
 
   - name: deploy-test-app
     type: cf
@@ -65,7 +65,7 @@ jobs:
         PASSWORD: my-pass
     - put: source-code
       params:
-        repository: source-code
+        repository: source-code2
         rebase: true
 
   # - name: package-and-deploy
