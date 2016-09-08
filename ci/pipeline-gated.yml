@@ -14,6 +14,14 @@ resources:
       username: {{GIT_USERNAME}}
       password: {{GIT_PASSWORD}}
 
+  - name: source-code2
+    type: git
+    source:
+      uri: {{GIT_REPO}}
+      branch: {{GIT_BRANCH}}
+      username: {{GIT_USERNAME}}
+      password: {{GIT_PASSWORD}}
+
   - name: deploy-test-app
     type: cf
     source:
