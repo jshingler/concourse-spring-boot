@@ -26,16 +26,12 @@ git config --global user.name "Concourse.CI"
 git remote -v
 # git merge origin/master
 git pull --rebase origin master
-date >> README.md
+echo -e "Passed Gate On: $(date)\n" >> README.md
 
 # git help
-echo "--------------- HERE WE GO"
 git add README.md
-echo "--------------- HERE WE GO - 1"
 git commit -m "Dated README"
-echo "--------------- HERE WE GO - 2"
 git clone . ../source-code2
-echo "--------------- HERE WE GO - Done"
 # git push
 echo "=============================="
 git status
