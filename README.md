@@ -1,8 +1,11 @@
 See: http://pivotal-guides.cfapps.io/frameworks/spring/concourse-gradle
 
-a
+a1
+
 b
+
 c
+
 d
 
 e
