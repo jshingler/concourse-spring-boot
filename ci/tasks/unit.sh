@@ -24,6 +24,10 @@ git config --global user.name "Concourse.CI"
 # git merge origin/master
 echo "Rebase master into branch"
 git pull --rebase origin master
+
+echo "Run Tests on rebase code"
+# Run Test on unrebased branch
+./gradlew test
 echo "Passed Gate On: $(date)\n" >> README.md
 
 # git help
