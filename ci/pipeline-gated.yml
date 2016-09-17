@@ -14,6 +14,12 @@ resources:
       username: {{GIT_USERNAME}}
       password: {{GIT_PASSWORD}}
 
+resource_types:
+  - name: pull-request
+    type: docker-image
+    source:
+      repository: jtarchie/pr
+
   # - name: source-code2
   #   type: git
   #   source:
@@ -67,6 +73,18 @@ jobs:
       params:
         repository: source-code2
         rebase: true
+    - put: repo
+      params:
+        path: repo
+        status: success
+    - task: issue-pull-request
+      privileged: true
+      file: source-code/ci/tasks/pullrequest.yml
+      params:
+        uri: {{GIT_REPO}}
+        branch: {{GIT_BRANCH}}
+        username: {{GIT_USERNAME}}
+        password: {{GIT_PASSWORD}}
 
   # - name: package-and-deploy
   #   plan:
