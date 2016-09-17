@@ -73,13 +73,9 @@ jobs:
       params:
         repository: source-code2
         rebase: true
-    - put: repo
-      params:
-        path: repo
-        status: success
     - task: issue-pull-request
       privileged: true
-      file: source-code/ci/tasks/pullrequest.yml
+      file: source-code2/ci/tasks/pullrequest.yml
       params:
         uri: {{GIT_REPO}}
         branch: {{GIT_BRANCH}}
