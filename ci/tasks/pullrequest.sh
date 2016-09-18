@@ -9,7 +9,7 @@ export TERM=${TERM:-dumb}
 # echo "2=$2"
 env
 
-curl -u "${username}:${password}" -H "Content-Type: application/json" -X POST -d '{"title": "'"${branch}"'", "body": "Gated Pull Request from CI", "head": "'"${branch}"'", "base": "'"${target}"'"}' "${uri}/pulls"
+curl -u "${username}:${password}" -H "Content-Type: application/json" -X POST -d '{"title": "'"${branch}"'", "body": "Gated Pull Request from CI", "head": "'"${branch}"'", "base": "'"${target}"'"}' -i "${uri}/pulls"
 
 echo "=============================="
 echo "Issued Pull request from ${branch} to ${target}"
