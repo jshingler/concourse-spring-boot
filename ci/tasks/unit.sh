@@ -3,10 +3,6 @@
 set -e # fail fast
 set -x # print commands
 export TERM=${TERM:-dumb}
-# echo "Build and Publish to Maven Repo"
-# echo "1=$1"
-# echo "2=$2"
-# env
 
 echo "Build and Publish to Maven Repo"
 

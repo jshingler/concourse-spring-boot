@@ -69,7 +69,12 @@ jobs:
         rebase: true
     - task: issue-pull-request
       privileged: true
-      file: source-code/ci/tasks/pullrequest.yml
+      file: source-code2/ci/tasks/pullrequest.yml
+      params:
+        uri: {{GIT_REPO}}
+        branch: {{GIT_BRANCH}}
+        username: {{GIT_USERNAME}}
+        password: {{GIT_PASSWORD}}
 
   # - name: package-and-deploy
   #   plan:
