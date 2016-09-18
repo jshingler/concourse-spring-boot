@@ -71,7 +71,7 @@ jobs:
       privileged: true
       file: source-code2/ci/tasks/pullrequest.yml
       params:
-        uri: {{GIT_REPO}}
+        uri: {{GIT_API}}
         branch: {{GIT_BRANCH}}
         username: {{GIT_USERNAME}}
         password: {{GIT_PASSWORD}}
