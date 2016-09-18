@@ -75,6 +75,7 @@ jobs:
         branch: {{GIT_BRANCH}}
         username: {{GIT_USERNAME}}
         password: {{GIT_PASSWORD}}
+        target: master
 
   # - name: package-and-deploy
   #   plan:
