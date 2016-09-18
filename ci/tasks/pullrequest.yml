@@ -13,12 +13,16 @@ outputs:
   - name: source-code2
 
 params:
-  USERNAME: NOT_SET_USERNAME
+  uri: NOT_SET_URI
+  branch: NOT_SET_BRANCH
+  username: NOT_SET_USERNAME
+  password: NOT_SET_PASSWORD
 
 run:
   # path: "source-code/gradlew"
   # args: ["--build-file", "source-code/build.gradle", "assemble", "test"]
-  path: "source-code/ci/tasks/unit.sh"
+  path: "source-code/ci/tasks/pullrequest.sh"
+  args: ["abc", "xyz" ]
 
 params:
   TERM: -dumb

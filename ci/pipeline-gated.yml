@@ -11,6 +11,16 @@ resources:
     source:
       uri: {{GIT_REPO}}
       branch: {{GIT_BRANCH}}
+      username: {{GIT_USERNAME}}
+      password: {{GIT_PASSWORD}}
+
+  # - name: source-code2
+  #   type: git
+  #   source:
+  #     uri: {{GIT_REPO}}
+  #     branch: {{GIT_BRANCH}}
+  #     username: {{GIT_USERNAME}}
+  #     password: {{GIT_PASSWORD}}
 
   - name: deploy-test-app
     type: cf
@@ -46,27 +56,39 @@ jobs:
   - name: unit-tests
     plan:
     - get: source-code
-      trigger: true
     - task: run-tests
       privileged: true
       file: source-code/ci/tasks/unit.yml
-    # - put: deploy-dev-app
-    #   params:
-    #     manifest: source-code/manifest-test.yml
-
-  - name: package-and-deploy
-    plan:
-    - get: source-code
-      passed: [ unit-tests ]
-      trigger: true
-    - task: package
-      file: source-code/ci/tasks/package.yml
-    - put: deploy-dev-app
       params:
-        manifest: source-code/manifest-test.yml
-        path: build/concourse-spring-boot*.jar
-        current_app_name: concourse-spring-boot
-        # path: source-code/build/libs/concourse-spring-boot-0.0.2-SNAPSHOT.jar
+        REMOTE_SERVER: 10.20.30.40:8080
+        USERNAME: my-user
+        PASSWORD: my-pass
+    - put: source-code
+      params:
+        repository: source-code2
+        rebase: true
+    - task: issue-pull-request
+      privileged: true
+      file: source-code2/ci/tasks/pullrequest.yml
+      params:
+        uri: {{GIT_REPO}}
+        branch: {{GIT_BRANCH}}
+        username: {{GIT_USERNAME}}
+        password: {{GIT_PASSWORD}}
+
+  # - name: package-and-deploy
+  #   plan:
+  #   - get: source-code
+  #     passed: [ unit-tests ]
+  #     trigger: true
+  #   - task: package
+  #     file: source-code/ci/tasks/package.yml
+  #   - put: deploy-dev-app
+  #     params:
+  #       manifest: source-code/manifest-test.yml
+  #       path: build/concourse-spring-boot*.jar
+  #       current_app_name: concourse-spring-boot
+  #       # path: source-code/build/libs/concourse-spring-boot-0.0.2-SNAPSHOT.jar
 
   # - name: deploy-to-dev
   #   plan:
