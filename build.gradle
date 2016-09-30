@@ -8,12 +8,20 @@ buildscript {
 	dependencies {
 		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
 	}
+
+
+
 }
+
+	plugins {
+	    id "org.sonarqube" version "2.1-rc3"
+	}
 
 apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'spring-boot'
 apply plugin: 'maven-publish'
+apply plugin: 'org.sonarqube'
 
 group = 'com.example'
 jar {
@@ -61,4 +69,11 @@ publishing {
             url "${repoUrl}/repository/maven-snapshots/"
         }
     }
+
+sonarqube {
+  properties {
+    property "sonar.projectName", "My Project Name"
+    property "sonar.projectKey", "org.sonarqube:java-gradle-simple"
+  }
+}
 }
