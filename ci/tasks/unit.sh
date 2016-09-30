@@ -14,25 +14,25 @@ git config --global user.email "CI@concourse.ci"
 git config --global user.name "Concourse.CI"
 # git remote -v
 
-# Run Test on unrebased branch
-./gradlew test
+# # Run Test on unrebased branch
+# ./gradlew test
 
-# Rebase Origin Master on this branch and rerun test (Build Acceptance)
-# git merge origin/master
-echo "Rebase master into branch"
-git pull --rebase origin master
+# # Rebase Origin Master on this branch and rerun test (Build Acceptance)
+# # git merge origin/master
+# echo "Rebase master into branch"
+# git pull --rebase origin master
 
-echo "Run Tests on rebase code"
-# Run Test on unrebased branch
-./gradlew test
-echo "Passed Gate On: $(date)\n" >> README.md
+# echo "Run Tests on rebase code"
+# # Run Test on unrebased branch
+# ./gradlew test
+# echo "Passed Gate On: $(date)\n" >> README.md
 
-# git help
-git add README.md
-git commit -m "Dated README"
+# # git help
+# git add README.md
+# git commit -m "Dated README"
 
-# Copy to output areas so it can be pushed back up to repo
-git clone . ../source-code2
+# # Copy to output areas so it can be pushed back up to repo
+# git clone . ../source-code2
 
 echo "=============================="
 echo "Build and Publish -- Done"
