@@ -5,7 +5,7 @@ set -x # print commands
 
 export TERM=${TERM:-dumb}
 
-echo "Build and Publish to Maven Repo"
+echo "Build and Publish to Maven Repo: ${MAVEN_REPO}"
 pwd
 cd source-code
 pwd

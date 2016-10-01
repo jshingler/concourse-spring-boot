@@ -13,7 +13,7 @@ outputs:
   - name: build
 
 params:
-  MAVEN_REPO: http://192.168.1.178:8081
+  MAVEN_REPO: NOT_SET
 
 run:
   path: "source-code/ci/tasks/package.sh"
