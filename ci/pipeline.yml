@@ -62,7 +62,7 @@ jobs:
     - task: package
       file: source-code/ci/tasks/package.yml
       params:
-        MAVEN_REPO: http://192.168.1.178:8081
+        MAVEN_REPO: {{MAVEN_REPO}}
     - put: deploy-dev-app
       params:
         manifest: source-code/manifest-test.yml
