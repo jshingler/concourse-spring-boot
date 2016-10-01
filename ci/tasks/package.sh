@@ -9,7 +9,7 @@ echo "Build and Publish to Maven Repo"
 pwd
 cd source-code
 pwd
-./gradlew assemble publish
+./gradlew -PrepoUrl=${NEXUS_PORT:MAVEN_REPO} assemble publish
 
 echo "Move artifacts to output area"
 cp build/libs/concourse-spring-boot*.jar ../build

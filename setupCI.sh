@@ -12,13 +12,14 @@ echo "  fly -t lite intercept -b 33"
 branch=$(git symbolic-ref --short HEAD)
 
 target=$1
+base=`basename "$PWD"`
 
 echo ""
-echo "Setup ${branch}_CI on target: ${target}"
+echo "Setup ${base}_${branch}_CI on target: ${target}"
 echo "========================================"
-fly -t ${target} set-pipeline --pipeline ${branch}_CI -c ci/pipeline.yml -l credentials.yml
+fly -t ${target} set-pipeline --pipeline ${base}_${branch}_CI -c ci/pipeline.yml -l credentials.yml
 
 echo ""
-echo "Setup ${branch}_Gated on target: ${target}"
+echo "Setup ${base}_${branch}_Gated on target: ${target}"
 echo "========================================"
-fly -t ${target} set-pipeline --pipeline ${branch}_Gated -c ci/pipeline-gated.yml -l credentials.yml
+fly -t ${target} set-pipeline --pipeline ${base}_${branch}_Gated -c ci/pipeline-gated.yml -l credentials.yml
