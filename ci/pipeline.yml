@@ -50,6 +50,8 @@ jobs:
     - task: run-tests
       privileged: true
       file: source-code/ci/tasks/unit.yml
+      params:
+        SONAR: {{SONAR}}
     # - put: deploy-dev-app
     #   params:
     #     manifest: source-code/manifest-test.yml
@@ -63,7 +65,6 @@ jobs:
       file: source-code/ci/tasks/package.yml
       params:
         MAVEN_REPO: {{MAVEN_REPO}}
-        SONAR: {{SONAR}}
     - put: deploy-dev-app
       params:
         manifest: source-code/manifest-test.yml
