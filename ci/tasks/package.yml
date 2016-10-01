@@ -13,7 +13,7 @@ outputs:
   - name: build
 
 params:
-  MAVEN_REPO: {{NEXUS_PORT}}
+  MAVEN_REPO: NOT_SET
 
 run:
   path: "source-code/ci/tasks/package.sh"
