@@ -14,8 +14,8 @@ git config --global user.email "CI@concourse.ci"
 git config --global user.name "Concourse.CI"
 # git remote -v
 
-# # Run Test on unrebased branch
-# ./gradlew test
+# Run Test on unrebased branch
+./gradlew -Dsonar.host.url=${SONAR} test sonarqube
 
 # # Rebase Origin Master on this branch and rerun test (Build Acceptance)
 # # git merge origin/master
