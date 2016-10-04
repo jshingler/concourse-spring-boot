@@ -22,6 +22,7 @@ apply plugin: 'eclipse'
 apply plugin: 'spring-boot'
 apply plugin: 'maven-publish'
 apply plugin: 'org.sonarqube'
+apply plugin: 'jacoco'
 
 group = 'com.example'
 jar {
@@ -69,6 +70,11 @@ publishing {
             url "${repoUrl}/repository/maven-snapshots/"
         }
     }
+}
+
+jacoco {
+    toolVersion = "0.7.6.201602180812"
+}
 
 sonarqube {
   properties {
@@ -76,4 +82,4 @@ sonarqube {
     property "sonar.projectKey", "org.sonarqube:java-gradle-simple"
   }
 }
-}
+
