@@ -5,6 +5,11 @@ resource_types:
       repository: twic/maven-repo-resource
       tag: "1"
 
+
+# -----------------------------------------------------
+# Resources
+# -----------------------------------------------------
+
 resources:
   - name: source-code
     type: git
@@ -51,6 +56,10 @@ resources:
       repository: http://192.168.1.178:8081/repository/maven-snapshots
       # re:pository: http://172.30.7.5:8081/repository/maven-snapshots
       # repository: http://10.210.168.181:8081/repository/maven-snapshot
+
+# -----------------------------------------------------
+# Jobs
+# -----------------------------------------------------
 
 jobs:
   - name: unit-tests
