@@ -11,7 +11,7 @@ cd source-code
 pwd
 # JLS Temporarily disable publish to nexus
 #./gradlew -PrepoUrl=${MAVEN_REPO} assemble publish
-./gradlew -PrepoUrl=${MAVEN_REPO} assemble publish
+./gradlew assemble
 
 echo "Move artifacts to output area"
 cp build/libs/concourse-spring-boot*.jar ../build
