@@ -16,7 +16,8 @@ git config --global user.name "Concourse.CI"
 
 # Run Test on unrebased branch
 echo "Run Tests and Sonar: ${SONAR}"
-./gradlew -Dsonar.host.url=${SONAR} test sonarqube
+#./gradlew -Dsonar.host.url=${SONAR} test sonarqube
+./gradlew test 
 
 # # Rebase Origin Master on this branch and rerun test (Build Acceptance)
 # # git merge origin/master
